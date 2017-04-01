@@ -51,7 +51,7 @@ Yields results like this:
 
   Usage:
      
-     To start a tab bar, use: ImGui::BeginTabBar(const charlabel)
+     To start a tab bar, use: ImGui::BeginTabBar(const char* label)
           -> The label can be blank if you want, but you MUST!! pass a string of some length. Use the '#' character to
               give it an ID without a label.
  
