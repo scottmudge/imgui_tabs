@@ -230,12 +230,6 @@ namespace ImGui
 
     /// Call this after you are done adding tabs
     IMGUI_API void  EndTabBar();
-
-
-
-
-
+    
 } // namespace ImGui
-
-
 #endif //IMGUI_TABS_HPP
