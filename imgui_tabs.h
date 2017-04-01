@@ -135,9 +135,6 @@ namespace ImGui
         /// Constructor
         TabBar(const char* label, const ImVec2 tab_bar_size);
 
-        /// Our logger object for delivering error/debug messages
-        const Ananda::Logger logger = Ananda::Logger("TabBar");
-
         /// Stores the titles of the tabs
         std::vector<const char*> tabTitles;
 
