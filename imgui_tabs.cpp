@@ -250,7 +250,6 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
 
     dc.CursorPos += ImVec2(0,tab_height + padding.y); // Add all the extra height used above.
     upperLeft = dc.CursorPos - ImVec2(0,padding.y);
-    wind->ClipRect.Max.x -= padding.x;
     Indent(padding.x);
     corner_rounding = rounding;
     ImGui::PushClipRect(ImVec2(min_x,bb.Max.y),ImVec2(max_x,wind->ClipRect.Max.y),false);
