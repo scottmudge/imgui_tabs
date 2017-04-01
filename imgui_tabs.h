@@ -69,8 +69,8 @@
  */
 
 
-#ifndef ANANDA_IMGUI_TABS_HPP
-#define ANANDA_IMGUI_TABS_HPP
+#ifndef IMGUI_TABS_HPP
+#define IMGUI_TABS_HPP
 
 #include <vector>
 #include "imgui.h"
