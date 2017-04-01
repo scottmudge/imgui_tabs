@@ -69,20 +69,20 @@ Yields results like this:
       computed from their respective labels).
  
       Notes:
-          You can change the rounding by altering:
+          * You can change the rounding by altering:
                   "static constexpr const float rounding = 6.0f;"
              in the _drawTabBarTop function. Alternatively, you can add it as a parameter, but to save on memory being passed
              around, and since I will be using 6 as a constant, I didn't include this.
  
-          The constexpr:
+          * The constexpr:
                   "static constexpr const float shrink = 1.0f;"
              in the _drawTabBarTop function needs to be set to the width of your borders.
  
-          I added custom colors and a new prototype for GetColorU32() to acquire these colors. You can change them here.
+          * I added custom colors and a new prototype for GetColorU32() to acquire these colors. You can change them here.
  
-          I added extra operator functions for ImVec2 and ImVec4, _YOU MUST_ define IMGUI_DEFINE_MATH_OPERATORS in
+          * I added extra operator functions for ImVec2 and ImVec4, _YOU MUST_ define IMGUI_DEFINE_MATH_OPERATORS in
              imgui_internal.h for this to work.
  
-          Please attribute my work if used or added, along with the original ImGui license/attribution.
+          * Please attribute my work if used or added, along with the original ImGui license/attribution.
  
  
