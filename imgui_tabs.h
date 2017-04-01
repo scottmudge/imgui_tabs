@@ -238,4 +238,4 @@ namespace ImGui
 } // namespace ImGui
 
 
-#endif //ANANDA_IMGUI_TABS_HPP
+#endif //IMGUI_TABS_HPP
