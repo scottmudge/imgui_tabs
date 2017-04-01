@@ -46,10 +46,12 @@ if (ImGui::AddTab("Tab Name5")){
 ImGui::EndTabBar();
 ```
 Yields results like this:
+
 ![alt text](http://i.imgur.com/6PSK9NL.gif "Animated Tabs")
 
   Usage:
-      To start a tab bar, use: ImGui::BeginTabBar(const charlabel)
+     
+     To start a tab bar, use: ImGui::BeginTabBar(const charlabel)
           -> The label can be blank if you want, but you MUST!! pass a string of some length. Use the '#' character to
               give it an ID without a label.
  
