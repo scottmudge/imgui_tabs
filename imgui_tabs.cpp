@@ -1,12 +1,8 @@
 /* **************************************************************************************
  *    Author: Scott Mudge
  *    MAIL@SCOTTMUDGE.COM
- *    (407) 494-4172
- *    Copyright © 2016-2017 - Scott Mudge
  *
  *                                  MIT License
- *
- *                          Copyright (c) 2017 Scott Mudge
  *                                  -----------
  *                               MAIL@SCOTTMUDGE.COM
  *
@@ -30,7 +26,7 @@
  *
  * **************************************************************************************/
 // File Name: imgui_tabs.cpp
-// File Description: Custom ImGui tab system module added by me (Scott)
+// File Description: Custom ImGui tab system module
 
 
 #include "imgui_tabs.h"
