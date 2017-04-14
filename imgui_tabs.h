@@ -1,12 +1,8 @@
 /* **************************************************************************************
  *    Author: Scott Mudge
  *    MAIL@SCOTTMUDGE.COM
- *    (407) 494-4172
- *    Copyright © 2016-2017 - Scott Mudge
  *
  *                                  MIT License
- *
- *                          Copyright (c) 2017 Scott Mudge
  *                                  -----------
  *                               MAIL@SCOTTMUDGE.COM
  *
