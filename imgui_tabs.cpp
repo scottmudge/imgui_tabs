@@ -264,7 +264,7 @@ void ImGui::TabBar::_drawTabBarBottom() {
     // the zero below the tabs is dc.CursorPos.y - padding.y
     // and if we wnt to add the tab height, we'll have to remove a constant
     // (= all the additional offsets used for the layout). FIXME : use the real name(s) instead
-    const float height = dc.CursorPos.y - padding.y + wind->Size.y - 92.0f; /*- wind->Pos.y*/ ;// + wind->Size.y + padding.y ;
+    const float height = dc.CursorPos.y - padding.y + wind->Size.y - 92.0f;
     const ImVec2 pos = ImVec2(wind->Pos.x + wind->Size.x - padding.x, height);
 
     // Draw the background in a given color + alpha

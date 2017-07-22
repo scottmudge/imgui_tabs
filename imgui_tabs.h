@@ -222,7 +222,7 @@ namespace ImGui
     /// Returns true when the tab is active. To use, implement with if(ImGui::AddTab(...)){}
     IMGUI_API const bool AddTab(const char* title);
 
-    /// To use, implement with if(ImGui::DrawTabBarBackground(...)){} just after ImGui::BeginTabBar();
+    /// To use, implement with if(ImGui::DrawTabsBackground(...)){} just after ImGui::BeginTabBar();
     IMGUI_API void DrawTabsBackground();
 
     /// Call this after you are done adding tabs
