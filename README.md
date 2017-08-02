@@ -4,6 +4,10 @@ Tab module for imgui. Should be relatively forwardly compatible.
 Code like this: 
 ```
 ImGui::BeginTabBar("Settings#left_tabs_bar");
+
+// ericb 2017_07_21 : draw the tabs background BEFORE to fill it, to avoid a "colored overlay"
+ImGui::DrawTabsBackground();
+
 if (ImGui::AddTab("General")){
     bool fullscreen = mGUICfg->fullScreen.value;
     if(ImGui::Checkbox("Fullscreen Mode",&fullscreen)){
@@ -31,6 +35,10 @@ ImGui::Dummy(ImVec2(0,20));
 
 ImGui::BeginTabBar("#Additional Parameters");
 float value = 0.0f;
+
+// ericb 2017_07_21 : draw the tabs background BEFORE to fill it, to avoid a "colored overlay"
+ImGui::DrawTabsBackground();
+
 if (ImGui::AddTab("Tab Name2")){
     ImGui::SliderFloat("Slider",&value,0,1.0f);
 }

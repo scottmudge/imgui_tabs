@@ -258,13 +258,21 @@ void ImGui::TabBar::_drawTabBarBottom() {
     ImGuiDrawContext& dc = wind->DC;
 
     const ImVec2 padding = style.WindowPadding;
-    const ImVec2 pos = ImVec2(wind->Size.x - padding.x, dc.CursorPos.y + padding.y);
-    const float height = pos.y - upperLeft.y;
+
+    // dc.CursorPos.y = bottom of tabs + padding.y
+    // wind->Size.y gives the full window height
+    // the zero below the tabs is dc.CursorPos.y - padding.y
+    // and if we wnt to add the tab height, we'll have to remove a constant
+    // (= all the additional offsets used for the layout). FIXME : use the real name(s) instead
+    const float height = dc.CursorPos.y - padding.y + wind->Size.y - 92.0f;
+    const ImVec2 pos = ImVec2(wind->Pos.x + wind->Size.x - padding.x, height);
+
+    // Draw the background in a given color + alpha
     dl->AddRectFilled(upperLeft, pos,ImColor(1.0f,1.0f,1.0f,0.15f),corner_rounding,ImGuiCorner_BottomLeft | ImGuiCorner_BottomRight);
-    dl->AddRect(upperLeft, pos,ImColor(1.0f,1.0f,1.0f,0.15f),corner_rounding,ImGuiCorner_BottomLeft | ImGuiCorner_BottomRight);
+    // Draw the border in a given color + alpha
+    dl->AddRect(upperLeft, pos,ImColor(1.0f,1.0f,1.0f,0.35f),corner_rounding,ImGuiCorner_BottomLeft | ImGuiCorner_TopRight);
 
     dc.CursorPos += ImVec2(0,corner_rounding+2.0f); // Add all the extra height used above.
-    Unindent(padding.x);
     ImGui::PopClipRect();
 }
 
@@ -357,13 +365,21 @@ const bool ImGui::AddTab(const char *title) {
     return bar->hasBeenInitialized;
 }
 
-void ImGui::EndTabBar() {
+void ImGui::DrawTabsBackground()
+{
     TabBar* bar = TabStack.getCurrentTabBar();
     if (bar->hasBeenInitialized)
         bar->_drawTabBarBottom();
+}
+
+void ImGui::EndTabBar() {
+    TabBar* bar = TabStack.getCurrentTabBar();
     bar->_setTabCount();
 }
 
+/* FIXME : unused ?
 void ImGui::SetActiveTabOfCurrentTabBar(const unsigned idx) {
     TabStack.getCurrentTabBar()->setActiveTab(idx);
 }
+*/
+

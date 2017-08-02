@@ -212,14 +212,18 @@ namespace ImGui
     /// Static instantiation of the TabBarStack
     IMGUI_API static TabBarStack TabStack;
 
+// FIXME : unused ?
     /// Outwardly accessible way to set the active tab of the current stack.
-    IMGUI_API static void SetActiveTabOfCurrentTabBar(const unsigned idx);
+//    IMGUI_API static void SetActiveTabOfCurrentTabBar(const unsigned idx);
 
     /// Star the Tab Bar with this function. It creates a tab bar based on the computed CRC32 hash and pushes it into the internal stack if so.
     IMGUI_API void BeginTabBar(const char *label, const ImVec2 size = ImVec2(0, 0));
 
     /// Returns true when the tab is active. To use, implement with if(ImGui::AddTab(...)){}
     IMGUI_API const bool AddTab(const char* title);
+
+    /// To use, implement with if(ImGui::DrawTabsBackground(...)){} just after ImGui::BeginTabBar();
+    IMGUI_API void DrawTabsBackground();
 
     /// Call this after you are done adding tabs
     IMGUI_API void  EndTabBar();
