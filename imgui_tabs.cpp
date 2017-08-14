@@ -271,6 +271,8 @@ void ImGui::TabBar::_drawTabBarBottom() {
     dl->AddRectFilled(upperLeft, pos,ImColor(1.0f,1.0f,1.0f,0.15f),corner_rounding,ImGuiCorner_BottomLeft | ImGuiCorner_BottomRight);
     // Draw the border in a given color + alpha
     dl->AddRect(upperLeft, pos,ImColor(1.0f,1.0f,1.0f,0.35f),corner_rounding,ImGuiCorner_BottomLeft | ImGuiCorner_TopRight);
+    // below, the real color used in the screenshot
+    //dl->AddRect(upperLeft, pos,ImColor(0.2f,0.2f,0.2f,0.35f),corner_rounding,ImGuiCorner_BottomLeft | ImGuiCorner_TopRight);
 
     dc.CursorPos += ImVec2(0,corner_rounding+2.0f); // Add all the extra height used above.
     ImGui::PopClipRect();
