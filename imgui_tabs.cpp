@@ -205,6 +205,7 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
             bool hovered = false;
             bool held = false;
             // ericb : pressed was unused
+            // bool pressed = ButtonBehavior(bb, tabHashes[i], &hovered, &held);
             ButtonBehavior(bb, tabHashes[i], &hovered, &held);
 
             if (held)
