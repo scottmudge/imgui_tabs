@@ -68,6 +68,12 @@
 #ifndef IMGUI_TABS_HPP
 #define IMGUI_TABS_HPP
 
+#ifndef IMGUI_DEFINE_MATH_OPERATORS
+#define IMGUI_DEFINE_MATH_OPERATORS
+#endif
+
+#include <string>
+#include <iostream>
 #include <vector>
 #include "imgui.h"
 #include "imgui_internal.h"
@@ -120,7 +126,7 @@ namespace ImGui
     };
 
     /// Used internally to draw a rounded rect with the different borders disabled
-    /*static void*/ _drawPartialRect(const ImVec2 a, const ImVec2 b, const float rounding, const int rounding_corners,
+    /*static*/ void _drawPartialRect(const ImVec2 a, const ImVec2 b, const float rounding, const int rounding_corners,
                                  ImDrawList* dl, const _EdgeType edges, const ImU32 color, const bool shadow = false,
                                  const _EdgeType shadow_edges = EDGE_NONE, const float shadow_offset = 4.0f,
                                  const float shadow_alpha = 0.075f);
