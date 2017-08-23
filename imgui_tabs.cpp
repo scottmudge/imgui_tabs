@@ -202,7 +202,7 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
             const float xr = offs + division - shrink + expands.y;
             const ImRect bb = ImRect(ImVec2(pos + ImVec2(xl, 0)),ImVec2( pos + ImVec2(xr, tab_height)));
 
-            bool hovered = false
+            bool hovered = false;
             bool held = false;
             // ericb : pressed was unused
             // bool pressed = ButtonBehavior(bb, tabHashes[i], &hovered, &held);
