@@ -31,6 +31,9 @@
 
 #include "imgui_tabs.h"
 
+// use this constant in the case you are using ImGUI < 1.51
+// #define IMGUI_VERSION_150_OR_MINUS
+
 ImGui::ImGuiUserStyle::ImGuiUserStyle(){
     Colors[ImGuiUserCol_TabNormal] = ImVec4(0.65f, 0.65f, 0.68f, 1.00f);
     Colors[ImGuiUserCol_TabTitleTextNormal] = ImVec4(0.0f, 0.0f, 0.0f, 0.5f);
@@ -103,12 +106,20 @@ void ImGui::_drawPartialRect(const ImVec2 a, const ImVec2 b, const float roundin
                 dl->PathArcToFast(ImVec2(a.x+r3-shadow_offset,b.y-r3), r3, 3, 6);
                 dl->PathArcToFast(ImVec2(a.x+r0-shadow_offset,a.y+r0), r0, 6, 9);
                 dl->PathLineTo(ImVec2(a.x,b.y));
+#if defined(IMGUI_VERSION_150_OR_MINUS)
                 dl->PathFill(col);
+#else
+                dl->PathFillConvex(col);
+#endif
             } if (shadow_edges & EDGE_RIGHT){
                 dl->PathArcToFast(ImVec2(b.x-r1+shadow_offset,a.y+r1), r1, 9, 12);
                 dl->PathArcToFast(ImVec2(b.x-r2+shadow_offset,b.y-r2), r2, 0, 3);
                 dl->PathLineTo(ImVec2(b.x,b.y));
+#if defined(IMGUI_VERSION_150_OR_MINUS)
                 dl->PathFill(col);
+#else
+                dl->PathFillConvex(col);
+#endif
             }
         }
     }
@@ -155,7 +166,8 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
     const float tab_height = CalcTextSize(tabTitles[0]).y + (frame_padding.y * 2);
 
     float selected_offset = 0;
-    _TabType selected_tab_type;
+    // ericb FIXME : unused
+    // _TabType selected_tab_type;
     ImVec2 selected_expands;
     _EdgeType selected_shadow_edges = EDGE_NONE;
     int selected_idx = 0;
@@ -190,8 +202,11 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
             const float xr = offs + division - shrink + expands.y;
             const ImRect bb = ImRect(ImVec2(pos + ImVec2(xl, 0)),ImVec2( pos + ImVec2(xr, tab_height)));
 
-            bool hovered, held;
-            bool pressed = ButtonBehavior(bb, tabHashes[i], &hovered, &held);
+            bool hovered = false
+            bool held = false;
+            // ericb : pressed was unused
+            // bool pressed = ButtonBehavior(bb, tabHashes[i], &hovered, &held);
+
             if (held)
                 newSelected = i;
 
@@ -264,7 +279,8 @@ void ImGui::TabBar::_drawTabBarBottom() {
     // the zero below the tabs is dc.CursorPos.y - padding.y
     // and if we wnt to add the tab height, we'll have to remove a constant
     // (= all the additional offsets used for the layout). FIXME : use the real name(s) instead
-    const float height = dc.CursorPos.y - padding.y + wind->Size.y - 92.0f;
+    const float additionnalOffsets = 92.0f;
+    const float height = dc.CursorPos.y - padding.y + wind->Size.y - additionnalOffsets;
     const ImVec2 pos = ImVec2(wind->Pos.x + wind->Size.x - padding.x, height);
 
     // Draw the background in a given color + alpha
