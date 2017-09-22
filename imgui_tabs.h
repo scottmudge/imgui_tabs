@@ -69,6 +69,8 @@
 #define IMGUI_TABS_HPP
 
 #include <vector>
+#include <iostream>
+#include <string>
 #include "imgui.h"
 #include "imgui_internal.h"
 
