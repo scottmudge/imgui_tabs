@@ -78,6 +78,23 @@
 #include "imgui.h"
 #include "imgui_internal.h"
 
+// Define one of them to keep the compatibility with older versions of Dear ImGui
+
+// use this constant if you are using Dear ImGui < 1.51
+//#define IMGUI_VERSION_150_OR_MINUS
+
+#if defined (IMGUI_VERSION_150_OR_MINUS)
+#define  PathFillConvex  PathFill
+#endif
+
+// use this constant if you are using Dear ImGui < 1.53
+//#define IMGUI_VERSION_152_OR_MINUS
+
+#if defined (IMGUI_VERSION_152_OR_MINUS)
+#define ImGuiCorner_BotLeft    ImGuiCorner_BottomLeft
+#define ImGuiCorner_BotRight    ImGuiCorner_BottomRight
+#endif
+
 
 // Extra Math Helpers (Set the proper define below in imgui_internal.h)
 #ifdef IMGUI_DEFINE_MATH_OPERATORS
