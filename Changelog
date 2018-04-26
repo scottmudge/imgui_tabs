@@ -1,0 +1,17 @@
+2018 April 26th
+
+eric bachard
+Resync'ed the code with Dear ImGui 1.61 WIP
+Added IMGUI_VERSION_160_OR_MINUX GUARD for old code
+Simplified the interface :
+-removed :ImGuiUserCol_TabHover, ImGuiUserCol_TabTitleTextNormal, ImGuiUserCol_TabTitleTextSelected,
+- now using ImGui themes
+- added StyleColorsLightGreen() theme, since it is miniDart legacy theme
+- removed duplicated code
+Tested ok using miniDart
+The code builds OK when cross-compiling (target : Windows7+ 64 and 32 bits)
+
+2018 July 21
+DrawTabsBackground added by eric bachard (Jul 21, 2017) under the same license
+See : https://github.com/ebachard/imgui_tabs
+and https://github.com/ScottMudge/imgui_tabs/issues/1
