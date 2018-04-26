@@ -25,6 +25,8 @@
  * SOFTWARE.
  *
  * **************************************************************************************/
+
+// Some changes have been done by eric bachard. See the changelog
 // File Name: imgui_tabs.cpp
 // File Description: Custom ImGui tab system module added by me (Scott)
 /*

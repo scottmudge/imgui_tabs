@@ -25,6 +25,7 @@
  * SOFTWARE.
  *
  * **************************************************************************************/
+// 2017-2018 : some changes made by eric bachard. See the Changelog
 // File Name: imgui_tabs.cpp
 // File Description: Custom ImGui tab system module
 
