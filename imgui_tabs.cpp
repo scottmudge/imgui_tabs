@@ -406,16 +406,16 @@ void ImGui::StyleColorsLightGreen(ImGuiStyle* dst)
     style->GrabRounding      = 2.0f;             // Radius of grabs corners rounding. Set to 0.0f to have rectangular slider grabs.
     style->AntiAliasedLines  = true;
     style->AntiAliasedFill   = true;
-    style->WindowRounding    = 2;
-    style->ChildRounding     = 2;
-    style->ScrollbarSize     = 16;
-    style->ScrollbarRounding = 3;
-    style->GrabRounding      = 2;
-    style->ItemSpacing.x     = 10;
-    style->ItemSpacing.y     = 4;
-    style->IndentSpacing     = 22;
-    style->FramePadding.x    = 6;
-    style->FramePadding.y    = 4;
+    style->WindowRounding    = 2.0f;
+    style->ChildRounding     = 2.0f;
+    style->ScrollbarSize     = 16.0f;
+    style->ScrollbarRounding = 3.0f;
+    style->GrabRounding      = 2.0f;
+    style->ItemSpacing.x     = 10.0f;
+    style->ItemSpacing.y     = 4.0f;
+    style->IndentSpacing     = 22.0f;
+    style->FramePadding.x    = 6.0f;
+    style->FramePadding.y    = 4.0f;
     style->Alpha             = 1.0f;
     style->FrameRounding     = 3.0f;
 
