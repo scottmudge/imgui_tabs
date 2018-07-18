@@ -138,7 +138,7 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
     // Gather pointers and references
     ImGuiWindow* wind = ImGui::GetCurrentWindow();
     ImDrawList* dl = wind->DrawList;
-    ImGuiDrawContext& dc = wind->DC;
+    ImGuiWindowTempData& dc = wind->DC;
     ImGuiStyle& style = ImGui::GetStyle();
     std::string str = label;
 
@@ -269,7 +269,7 @@ void ImGui::TabBar::_drawTabBarBottom() {
     ImGuiWindow* wind = ImGui::GetCurrentWindow();
     ImDrawList* dl = wind->DrawList;
     ImGuiStyle& style = ImGui::GetStyle();
-    ImGuiDrawContext& dc = wind->DC;
+    ImGuiWindowTempData& dc = wind->DC;
 
     const ImVec2 padding = style.WindowPadding;
 
