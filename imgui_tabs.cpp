@@ -138,11 +138,12 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
     // Gather pointers and references
     ImGuiWindow* wind = ImGui::GetCurrentWindow();
     ImDrawList* dl = wind->DrawList;
-    ImGuiWindowTempData& dc = wind->DC;
+    ImGuiDrawContext& dc = wind->DC;
     ImGuiStyle& style = ImGui::GetStyle();
     std::string str = label;
 
     barTitle = str.substr(0,str.find_first_of("#"));
+
     if (barTitle.length()>0)
         ImGui::Text(std::string("\t"+barTitle).c_str(), "%s");
 
@@ -160,7 +161,7 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
     static constexpr const float shrink = 1.0f;
 
     // ericb ajouté 2.0, parce que pas assez d'espace
-    const float tab_height = CalcTextSize(tabTitles[0]).y + (frame_padding.y * 2) + 2.0;
+    const float tab_height = CalcTextSize(tabTitles[0]).y + (frame_padding.y * 2) + 6.0;
 
     float selected_offset = 0;
     // FIXME unused
@@ -168,8 +169,8 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
     ImVec2 selected_expands;
     _EdgeType selected_shadow_edges = EDGE_NONE;
     int selected_idx = 0;
+
     // Store maximum/minimum x value for clipping rect.
-    // TEST3
     const float max_x = wind->Pos.x + wind->Size.x - padding.x; // Used for clipping rect adjustment.
     const float min_x = wind->Pos.x + padding.x;
 
@@ -180,14 +181,16 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
     newSelected = -1;
 
     // Draw the tabs
-    for (int i = 0; i<tabCount; i++) {
+    for (int i = 0; i<tabCount; i++)
+    {
 
 
         // Calculate offset
         const float offs = i * division;
         const bool selected = (activeTab == i);
         ImVec2 expands;
-        if (!selected) {
+        if (!selected)
+        {
             if (i == 0) {
                 expands = ImVec2(0,2);
             } else if (i == tabCount - 1) {
@@ -221,22 +224,30 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
             const ImVec2 text_pos = pos + ImVec2(offs+((xr-xl) - text_size.x)/2.0f,((text_size.y - frame_padding.y*2.0f)/2.0f));
             dl->AddText(text_pos,GetColorU32(ImGuiCol_Text),tabTitles[i]);
 
-        } else{
+        }
+        else
+        {
             selected_offset = offs;
             selected_idx = i;
-            if (i == 0) {
+            if (i == 0)
+            {
                 selected_expands = ImVec2(0,rounding);
                 selected_shadow_edges = EDGE_RIGHT;
-            } else if (i == tabCount - 1) {
+            }
+            else if (i == tabCount - 1)
+            {
                 selected_expands = ImVec2(rounding,0);
                 selected_shadow_edges = EDGE_LEFT;
-            } else {
+            }
+            else
+            {
                 selected_expands = ImVec2(rounding,rounding);
                 selected_shadow_edges = (_EdgeType)(EDGE_RIGHT | EDGE_LEFT);
             }
 
         }
     }
+
     const float xl = selected_offset - selected_expands.x + shrink;
     const float xr = selected_offset + division - shrink + selected_expands.y;
     const ImRect bb = ImRect(ImVec2(pos + ImVec2(xl, 0)),ImVec2( pos + ImVec2(xr, tab_height)));
@@ -253,7 +264,7 @@ void ImGui::TabBar::_drawTabBarTop(const char *label) {
 
     // at the end ... draw the text
     const ImVec2 text_size = CalcTextSize(tabTitles[selected_idx]);
-    const ImVec2 text_pos = pos + ImVec2(selected_offset+((xr-xl) - text_size.x)/2.0f - selected_expands.x,((text_size.y - frame_padding.y*2.0f)/2.0f));
+    const ImVec2 text_pos = pos + ImVec2(selected_offset+((xr-xl) - text_size.x)/2.0f + 2.0f - selected_expands.x,((text_size.y - frame_padding.y*2.0f)/2.0f));
 
     // shadow or not shadow ?
     dl->AddText(text_pos,GetColorU32(ImGuiCol_Text),tabTitles[selected_idx]);
@@ -269,7 +280,7 @@ void ImGui::TabBar::_drawTabBarBottom() {
     ImGuiWindow* wind = ImGui::GetCurrentWindow();
     ImDrawList* dl = wind->DrawList;
     ImGuiStyle& style = ImGui::GetStyle();
-    ImGuiWindowTempData& dc = wind->DC;
+    ImGuiDrawContext& dc = wind->DC;
 
     const ImVec2 padding = style.WindowPadding;
 
@@ -278,7 +289,7 @@ void ImGui::TabBar::_drawTabBarBottom() {
     // the zero below the tabs is dc.CursorPos.y - padding.y
     // and if we wnt to add the tab height, we'll have to remove a constant
     // (= all the additional offsets used for the layout). FIXME : use the real name(s) instead
-    const float additionnalOffset_y = 92.0f;//53.0f;//92.0f;// 63.0f;
+    const float additionnalOffset_y = 67.0f;//53.0f;//92.0f;// 63.0f;
     const float height = dc.CursorPos.y - padding.y + wind->Size.y - additionnalOffset_y;
     const ImVec2 pos = ImVec2(wind->Pos.x + wind->Size.x - padding.x, height);
 
