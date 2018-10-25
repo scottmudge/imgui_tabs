@@ -25,6 +25,8 @@
  * SOFTWARE.
  *
  * **************************************************************************************/
+
+// Some changes have been done by eric bachard. See the changelog
 // File Name: imgui_tabs.cpp
 // File Description: Custom ImGui tab system module added by me (Scott)
 /*
@@ -68,15 +70,41 @@
 #ifndef IMGUI_TABS_HPP
 #define IMGUI_TABS_HPP
 
+#ifndef IMGUI_DEFINE_MATH_OPERATORS
+#define IMGUI_DEFINE_MATH_OPERATORS
+#endif
+
+#include <string>
+#include <iostream>
 #include <vector>
 #include "imgui.h"
 #include "imgui_internal.h"
 
+// Define one of them to keep the compatibility with older versions of Dear ImGui
+//#define IMGUI_VERSION_150_OR_MINUS
+//#define IMGUI_VERSION_154_OR_MINUS
+//#define IMGUI_VERSION_160_OR_MINUS
+
+#if defined (IMGUI_VERSION_150_OR_MINUS)
+#define  PathFillConvex  PathFill
+#endif
+
+#if defined (IMGUI_VERSION_152_OR_MINUS)
+#define ImGuiCorner_BotLeft    ImGuiCorner_BottomLeft
+#define ImGuiCorner_BotRight    ImGuiCorner_BottomRight
+#endif
+
+#if defined (IMGUI_VERSION_153_OR_MINUS)
+#define AntiAliasedFill  AntiAliasedShapes
+#define ChildRounding    ChildWindowRounding
+#define ImGuiStyleVar_ChildRounding  ImGuiStyleVar_ChildWindowRounding
+#endif
+
 
 // Extra Math Helpers (Set the proper define below in imgui_internal.h)
 #ifdef IMGUI_DEFINE_MATH_OPERATORS
-static inline ImVec4 operator+(const ImVec4& lhs, const ImVec4& rhs)            { return ImVec4(lhs.x+rhs.x, lhs.y+rhs.y, lhs.z+rhs.z, lhs.w+rhs.w); }
-static inline ImVec4 operator*(const ImVec4& lhs, const ImVec4& rhs)            { return ImVec4(lhs.x*rhs.x, lhs.y*rhs.y, lhs.z*rhs.z, lhs.w*rhs.w); }
+//static inline ImVec4 operator+(const ImVec4& lhs, const ImVec4& rhs)            { return ImVec4(lhs.x+rhs.x, lhs.y+rhs.y, lhs.z+rhs.z, lhs.w+rhs.w); }
+//static inline ImVec4 operator*(const ImVec4& lhs, const ImVec4& rhs)            { return ImVec4(lhs.x*rhs.x, lhs.y*rhs.y, lhs.z*rhs.z, lhs.w*rhs.w); }
 static inline ImVec4 operator/(const ImVec4& lhs, const ImVec4& rhs)            { return ImVec4(lhs.x/rhs.x, lhs.y/rhs.y, lhs.z/rhs.z, lhs.w/rhs.w); }
 
 static inline ImVec4& operator+=(ImVec4& lhs, const ImVec4& rhs)            { lhs.x += rhs.x; lhs.y += rhs.y; lhs.z += rhs.z; lhs.w += rhs.w; return lhs;}
@@ -92,11 +120,11 @@ namespace ImGui
         ImGuiUserCol_TabBorder = 0,
         ImGuiUserCol_TabBorderShadow,
         ImGuiUserCol_TabNormal,
-        ImGuiUserCol_TabHover,
-        ImGuiUserCol_TabTitleTextNormal,
-        ImGuiUserCol_TabTitleTextSelected,
         ImGuiUserCol_COUNT
     };
+
+    // New style inspired from Traditionnal Green (gtk+) on Linux + to be improved !
+    IMGUI_API void  StyleColorsLightGreen(ImGuiStyle* dst = NULL); // the default style in miniDart software
 
     /// Defines our user style attributes that don't fit within the standard ImGui stack
     IMGUI_API struct ImGuiUserStyle
@@ -120,7 +148,7 @@ namespace ImGui
     };
 
     /// Used internally to draw a rounded rect with the different borders disabled
-    static void _drawPartialRect(const ImVec2 a, const ImVec2 b, const float rounding, const int rounding_corners,
+    /*static*/ void _drawPartialRect(const ImVec2 a, const ImVec2 b, const float rounding, const int rounding_corners,
                                  ImDrawList* dl, const _EdgeType edges, const ImU32 color, const bool shadow = false,
                                  const _EdgeType shadow_edges = EDGE_NONE, const float shadow_offset = 4.0f,
                                  const float shadow_alpha = 0.075f);
@@ -227,6 +255,6 @@ namespace ImGui
 
     /// Call this after you are done adding tabs
     IMGUI_API void  EndTabBar();
-    
+
 } // namespace ImGui
 #endif //IMGUI_TABS_HPP

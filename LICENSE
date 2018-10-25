@@ -19,3 +19,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+DrawTabsBackground added by eric bachard (Jul 21, 2017) under the same license
+See : https://github.com/ebachard/imgui_tabs
+and https://github.com/ScottMudge/imgui_tabs/issues/1
